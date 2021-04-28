@@ -10,3 +10,53 @@
  \__,_|_|_| |_|  \__,_|_|  \__,_|/ |_|
                                |__/   
 */
+
+/* this rule set background to body */
+body {
+    background-image: url("img/wallpaper1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-size: cover;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+/* this is for flex display */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this rule is for base 2 main divs to be responsive */
+.wrap-flex-items {
+    flex-wrap: wrap;
+}
+
+.full-height {
+    height: 90vh;
+}
+
+/* this rule is for base 2 main divs' background and spaceing */
+.base-flex-item {
+    background-color: rgba(255, 255, 255, .75);
+    margin: 20pt;
+    padding: 40pt;
+}
+
+.inline-text {
+    display: inline-block;
+    margin: auto;
+}
+
+#avatar {
+    width: 120pt;
+    height: 120pt;
+}
+
+.info-section {
+    margin-right: 10pt;
+}
