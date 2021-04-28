@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github User Checker</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -21,28 +22,37 @@
                 </div>
 
                 <div class="info-section">
-                    <p>Ali Faraji</p>
-                    <p><a href="https://01d.ir/" title="Ali faraji's Blof">https://01d.ir/</a></p>
-                    <p>Tehran, Iran</p>
+                    <h2 id="name">Ali Faraji</h2>
+                    <p><a id="blog" href="https://01d.ir/" title="Ali faraji's Blof">https://01d.ir/</a></p>
+                    <p id="location">Tehran, Iran</p>
                 </div>
             </div>
 
-            <div>
-                this is bottom
+            <div id="bio">
+                this is bio
             </div>
 
         </div>
         <div class="base-flex-item">
 
+            <div id="errorMessage">
+                this is error.
+            </div>
+
             <form>
-                <input type="text" name="username" id="usernameInput" placeholder="github username">
-                <br>
-                <input type="submit" value="Get Info">
+
+                <div class="form-group">
+                    <label for="usernameInput">username:</label>
+                    <input type="text" class="form-field" minlength="3" name="username" id="usernameInput" placeholder="github username" required>
+                </div>
+
+
+                <input id="formSubmitBtn" type="button" value="Get Info">
+
             </form>
 
         </div>
     </div>
-
 
     <script src="script.js"></script>
 

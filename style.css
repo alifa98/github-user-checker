@@ -31,7 +31,7 @@ body {
     align-items: center;
 }
 
-/* this rule is for base 2 main divs to be responsive */
+/* this rule is for base 2 main divs to be responsive (default is nowrap) */
 .wrap-flex-items {
     flex-wrap: wrap;
 }
@@ -42,9 +42,10 @@ body {
 
 /* this rule is for base 2 main divs' background and spaceing */
 .base-flex-item {
-    background-color: rgba(255, 255, 255, .75);
+    background: linear-gradient(rgba(226, 235, 240, .8), rgba(207, 217, 223, .8));
     margin: 20pt;
     padding: 40pt;
+    border-radius: 5px;
 }
 
 .inline-text {
@@ -59,4 +60,11 @@ body {
 
 .info-section {
     margin-right: 10pt;
+}
+
+#errorMessage {
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
 }
