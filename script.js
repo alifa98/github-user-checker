@@ -67,7 +67,7 @@ function showDetail(data) {
      */
     let name = data["name"];
     let bio = data["bio"];
-    let location = ["location"];
+    let location = data["location"];
     let blog = data["blog"]
     let avatar = data["avatar_url"]
 
