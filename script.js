@@ -20,6 +20,14 @@ async function getUserInfo(username) {
         errorMessage: ""
     }
 
+    let localData = JSON.parse(localStorage.getItem(username));
+
+    //if local data exist so return it.
+    if (localData) {
+        console.log("Load from Local Storage");
+        return localData;
+    }
+    // if data does not exist on local storage this fetch gets it.
     return fetch("https://api.github.com/users/" + username).then(function (response) {
 
         if (!response.ok) {
@@ -37,6 +45,7 @@ async function getUserInfo(username) {
 
     }).then(function (body) {
         responseObject.data = body
+        localStorage.setItem(username, JSON.stringify(responseObject)); //saving successful response on local storate
         return responseObject;
 
     }).catch(function (error) {
@@ -44,6 +53,8 @@ async function getUserInfo(username) {
         responseObject.errorMessage = error.message;
         return responseObject;
     })
+
+
 
 }
 
