@@ -89,33 +89,47 @@ function showDetail(data) {
 }
 
 
-function showError(message) {
-    let elem = document.getElementById("errorMessage")
+function showMessage(message, className = "errorMessageStyle") {
+    let elem = document.getElementById("messageBox")
     elem.innerHTML = message;
     elem.style.display = 'block';
+    elem.setAttribute("class", className)
 }
 
+function hideMessage() {
+    let elem = document.getElementById("messageBox")
+    elem.style.display = 'none';
+}
+
+function disableForm() {
+    document.getElementById("formDimmer").style.display = "flex";
+}
+
+function enableForm() {
+    document.getElementById("formDimmer").style.display = "none";
+}
 
 function submitEventHandler(event) {
 
+    event.preventDefault();
+
+    disableForm();
     let username = document.getElementById("usernameInput").value;
 
     if (!username && username.trim() == "") {
-        showError("invalid Username.")
+        showMessage("invalid Username.")
     } else {
 
         getUserInfo(username).then(responseObj => {
             if (responseObj.success) {
                 showDetail(responseObj.data);
+                enableForm();
             } else {
-                showError(responseObj.errorMessage)
+                showMessage(responseObj.errorMessage);
+                enableForm();
             }
         });
     }
-
-    return false;
 }
 
-
-
-document.getElementById("formSubmitBtn").addEventListener("click", submitEventHandler);
+document.getElementById("formSubmitBtn").addEventListener("submit", submitEventHandler);

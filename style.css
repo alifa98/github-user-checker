@@ -44,8 +44,12 @@ body {
 .base-flex-item {
     background: linear-gradient(rgba(226, 235, 240, .8), rgba(207, 217, 223, .8));
     margin: 20pt;
-    padding: 40pt;
     border-radius: 5px;
+    position: relative;
+}
+
+.large-padding {
+    padding: 40pt;
 }
 
 .inline-text {
@@ -62,9 +66,28 @@ body {
     margin-right: 10pt;
 }
 
-#errorMessage {
+#messageBox {
+    display: none;
+}
+
+.errorMessageStyle {
     padding: 5px 10px;
     border-radius: 2px;
     margin-bottom: 5px;
     background: linear-gradient(90deg, #ff758c, #ff7eb3);
+}
+
+#formDimmer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(20, 20, 20, .75);
+    z-index: 999;
+    font-size: 25pt;
+    color: antiquewhite;
+    /* display: flex; */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
