@@ -14,7 +14,14 @@
 
     <div class="flex-container full-height wrap-flex-items">
         <div class="base-flex-item ">
+
+            <div id="messageBox">
+                <div id="messageText">This is a test message.</div>
+                <span class="closebtn" onclick="hideMessage()">&times;</span>
+            </div>
+
             <div class="large-padding">
+
                 <div class="flex-container">
 
                     <div class="info-section">
@@ -31,15 +38,16 @@
                 <div id="bio">
                     this is bio
                 </div>
+
             </div>
         </div>
         <div class="base-flex-item">
-            <div id="formDimmer">Loading...</div>
-            <div class="large-padding">
 
-                <div id="messageBox">
-                    this is error.
-                </div>
+            <div id="formDimmer">
+                <div class="loader"></div>
+            </div>
+
+            <div class="large-padding">
 
                 <form id="formSubmitBtn">
 
@@ -49,9 +57,10 @@
                     </div>
 
 
-                    <input type="submit" value="Get Info">
+                    <input class="btn" type="submit" value="Get Info">
 
                 </form>
+
             </div>
         </div>
     </div>

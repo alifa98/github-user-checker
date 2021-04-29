@@ -66,16 +66,6 @@ body {
     margin-right: 10pt;
 }
 
-#messageBox {
-    display: none;
-}
-
-.errorMessageStyle {
-    padding: 5px 10px;
-    border-radius: 2px;
-    margin-bottom: 5px;
-    background: linear-gradient(90deg, #ff758c, #ff7eb3);
-}
 
 #formDimmer {
     position: absolute;
@@ -90,4 +80,86 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* This is a div that its one border is green and because of its raius property it became a circle  */
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #046b1e;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+
+/* Style buttons */
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+/* because of padding in .general-message rule we set border-box to padding calculated in width and height.  */
+#messageBox {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    direction: ltr;
+}
+
+.general-message {
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+
+}
+
+.alert {
+    background-color: #f44336;
+}
+
+.warn {
+    background-color: #ff9800;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
 }

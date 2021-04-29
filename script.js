@@ -27,6 +27,9 @@ async function getUserInfo(username) {
             if (response.status == 404)
                 throw Error("User not found.")
 
+            if (response.status == 403)
+                throw Error("Forbidden (Maybe because of rate limit.)")
+
             throw Error("Error in getting user info.")
         }
 
@@ -89,16 +92,17 @@ function showDetail(data) {
 }
 
 
-function showMessage(message, className = "errorMessageStyle") {
-    let elem = document.getElementById("messageBox")
-    elem.innerHTML = message;
-    elem.style.display = 'block';
-    elem.setAttribute("class", className)
+function showMessage(message, className = "general-message alert") {
+
+    document.getElementById("messageText").innerHTML = message;
+
+    let boxElement = document.getElementById("messageBox")
+    boxElement.setAttribute("class", className);
+    boxElement.style.display = "flex";
 }
 
 function hideMessage() {
-    let elem = document.getElementById("messageBox")
-    elem.style.display = 'none';
+    document.getElementById("messageBox").style.display = "none";
 }
 
 function disableForm() {
@@ -113,11 +117,13 @@ function submitEventHandler(event) {
 
     event.preventDefault();
 
+    hideMessage();
     disableForm();
     let username = document.getElementById("usernameInput").value;
 
-    if (!username && username.trim() == "") {
-        showMessage("invalid Username.")
+    if (!username || username.trim() == "") {
+        showMessage("invalid Username.", "general-message warn");
+        enableForm();
     } else {
 
         getUserInfo(username).then(responseObj => {
