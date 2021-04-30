@@ -126,8 +126,8 @@ body {
     width: 100%;
     box-sizing: border-box;
     z-index: 999;
-    display: none;
-    /* display: flex; */
+    /* display: none; */
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -147,6 +147,10 @@ body {
 
 .warn {
     background-color: #ff9800;
+}
+
+.info {
+    background-color: #006ed4;
 }
 
 .closebtn {
