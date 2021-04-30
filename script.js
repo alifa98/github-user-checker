@@ -102,7 +102,7 @@ async function getFavoriteLanguage(repositories_url) {
                 }
             });
 
-            if (Object.keys({}).length === 0)
+            if (Object.keys(top_languages).length === 0)
                 return null;
 
             //return language which has maximum score.
@@ -159,17 +159,20 @@ function showDetail(data) {
 
     bioElem.innerHTML = bio ? bio.replace("\n", "<br>") : "";
 
-    nameElem.innerHTML = name;
+    nameElem.innerHTML = name ? name : "";
 
     if (blog) {
+        blogElem.style.display = "block";
         blogElem.setAttribute("href", blog);
         blogElem.setAttribute("title", name + "'s blog address");
         blogElem.innerHTML = blog;
+    } else {
+        blogElem.style.display = "none";
     }
 
-    locationElem.innerHTML = location;
+    locationElem.innerHTML = location ? location : "";
 
-    favLangElem.innerHTML = favLang;
+    favLangElem.innerHTML = favLang ? favLang : "";
 
 }
 
