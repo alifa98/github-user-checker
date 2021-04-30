@@ -14,12 +14,14 @@
 
 async function getUserInfo(username) {
 
+    // this is an object which holds erros and success responses.
     let responseObject = {
         data: {},
         success: true,
         errorMessage: ""
     }
 
+    //get data from local storage.
     let localData = JSON.parse(localStorage.getItem(username));
 
     //if local data exist so return it.
@@ -27,7 +29,8 @@ async function getUserInfo(username) {
         console.log("Load from Local Storage");
         return localData;
     }
-    // if data does not exist on local storage this fetch gets it.
+
+    // if data does not exist on local storage this fetch gets it from API.
     return fetch("https://api.github.com/users/" + username).then(function (response) {
 
         if (!response.ok) {
@@ -60,6 +63,7 @@ async function getUserInfo(username) {
 
 }
 
+// this functions get 5 or less last pushed repos and get their langs score and return high-scored lang as result.
 async function getFavoriteLanguage(repositories_url) {
 
     return fetch(repositories_url).then(responseHeader => {
@@ -71,6 +75,7 @@ async function getFavoriteLanguage(repositories_url) {
 
         let numberOfCheckRepository = Math.min(repos.length, 5); // if repos count was less than 5
 
+        //sort by pushed_at value.
         repos.sort((a, b) => {
             return new Date(b["pushed_at"]) - new Date(a["pushed_at"]);
         });
@@ -83,6 +88,8 @@ async function getFavoriteLanguage(repositories_url) {
 
 
         let top_languages = {};
+
+        // when all promises resolved this block runs and calculate scores.
         return Promise.all(promises).then(values => {
             values.forEach(langs => {
                 if (langs) {
@@ -95,6 +102,9 @@ async function getFavoriteLanguage(repositories_url) {
                 }
             });
 
+            if (Object.keys({}).length === 0)
+                return null;
+
             //return language which has maximum score.
             return Object.keys(top_languages).reduce((fav, item) => top_languages[item] > top_languages[fav] ? item : fav);
         });
@@ -104,6 +114,7 @@ async function getFavoriteLanguage(repositories_url) {
     });
 }
 
+// this function gets language from API, in case of error this returns empty object.
 async function getLanguages(languages_url) {
 
     return fetch(languages_url).then(headerInfos => {
@@ -115,6 +126,7 @@ async function getLanguages(languages_url) {
 
 }
 
+//this function change dom elemnts based on data.
 function showDetail(data) {
 
     /**
@@ -138,7 +150,7 @@ function showDetail(data) {
     let favLangElem = document.getElementById("favoriteLang");
 
     /**
-     * filling elements with data
+     * filling elements with related data
      */
 
     imageElem.setAttribute("src", avatar);
@@ -161,7 +173,7 @@ function showDetail(data) {
 
 }
 
-
+// show message on detail's box.(alert is default message type)
 function showMessage(message, className = "general-message alert") {
 
     document.getElementById("messageText").innerHTML = message;
@@ -171,18 +183,22 @@ function showMessage(message, className = "general-message alert") {
     boxElement.style.display = "flex";
 }
 
+// hides message box from detail's box.
 function hideMessage() {
     document.getElementById("messageBox").style.display = "none";
 }
 
+// this covers form by a div with loading inside it to prevent rapid submit on form button & makes form beautiful :)
 function disableForm() {
     document.getElementById("formDimmer").style.display = "flex";
 }
 
+// this hides loader and cover.
 function enableForm() {
     document.getElementById("formDimmer").style.display = "none";
 }
 
+//this function fires if an event occurs by the submit button.
 function submitEventHandler(event) {
 
     event.preventDefault();
@@ -208,4 +224,5 @@ function submitEventHandler(event) {
     }
 }
 
+// this line set a submit listener on submit button.
 document.getElementById("formSubmitBtn").addEventListener("submit", submitEventHandler);

@@ -24,18 +24,21 @@ body {
     font-size: large;
 }
 
-/* this is for flex display */
+/* this is for flex display - vertical and horizontal align */
 .flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* this rule is for base 2 main divs to be responsive (default is nowrap) */
+/* this rule is for base 2 main divs to be responsive (default is nowrap)
+in mobiles or other small screens second div goes to next line (stack).
+*/
 .wrap-flex-items {
     flex-wrap: wrap;
 }
 
+/* we set full height to align boxes in middle of screen*/
 .full-height {
     height: 90vh;
 }
@@ -48,25 +51,26 @@ body {
     position: relative;
 }
 
+/* adds padding to elemets*/
 .large-padding {
     padding: 40pt;
 }
 
-.inline-text {
-    display: inline-block;
-    margin: auto;
-}
-
+/* sets avatar dimentions*/
 #avatar {
     width: 120pt;
     height: 120pt;
 }
 
+/*this is details box' top sections. (to add space between text and image)*/
 .info-section {
     margin-right: 10pt;
 }
 
-
+/* this is form disableer.
+this covers form by setting position as aboslute and width and height same as parent.
+z-index is 999 so this element is front of form.
+*/
 #formDimmer {
     position: absolute;
     height: 100%;
@@ -75,13 +79,14 @@ body {
     z-index: 999;
     font-size: 25pt;
     color: antiquewhite;
-    /* display: flex; */
+    /* display: flex; uncomment is when you want to show this element by default. (this is redundant, only for test purpose)*/
     display: none;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
+/* this is an animation for loading spinner */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -92,7 +97,7 @@ body {
     }
 }
 
-/* This is a div that its one border is green and because of its raius property it became a circle  */
+/* This applied on a div which its one border is green and because of its radius property it became a circle  */
 .loader {
     border: 10px solid #f3f3f3;
     border-top: 10px solid #046b1e;
@@ -102,7 +107,8 @@ body {
     animation: spin 1.5s linear infinite;
 }
 
-/* Style buttons */
+/* this is a large blue button for form.
+fills all space horizontally */
 .btn {
     background-color: DodgerBlue;
     border: none;
@@ -119,7 +125,10 @@ body {
     background-color: RoyalBlue;
 }
 
-/* because of padding in .general-message rule we set border-box to padding calculated in width and height.  */
+/*
+this rule is for message box.
+message box covers all over detail's box.
+because of padding in .general-message rule, we set border-box to box-sizing in order to padding considred in width and height.  */
 #messageBox {
     position: absolute;
     height: 100%;
@@ -134,25 +143,34 @@ body {
     direction: ltr;
 }
 
+/*
+    general style for message box. some padding and default white color.
+*/
 .general-message {
     padding: 20px;
     color: white;
-    margin-bottom: 15px;
-
 }
 
+/* red background color for alers */
 .alert {
     background-color: #f44336;
 }
 
+/* yellow background color for warnings */
 .warn {
     background-color: #ff9800;
 }
 
+/* blue background color for information */
 .info {
     background-color: #006ed4;
 }
 
+/*
+  little times sign style.
+  float right becase in english all close btns are right :)
+  transitino because of Aesthetics
+*/
 .closebtn {
     margin-left: 15px;
     color: white;
@@ -164,10 +182,15 @@ body {
     transition: 0.3s;
 }
 
+/* dark color on mouse-over for close button */
 .closebtn:hover {
     color: black;
 }
 
+/*  this is for usename box
+fills space horizontally.
+because of 100% width we set box-sizing to border-box to filll only lawful space in parent :)
+*/
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
