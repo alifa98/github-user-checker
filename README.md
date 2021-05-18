@@ -1,4 +1,4 @@
-# github-user-checker
+# Github User Checker
 this is a simple project for checking user information on github.
 
 (fetch API, async, await, promise)
